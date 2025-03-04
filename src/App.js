@@ -6,6 +6,12 @@ import JoinPage from './pages/JoinPage';
 import BoardPage from './pages/BoardPage';
 import BoardContentPage from './pages/BoardContentPage';
 import BoardWritePage from './pages/BoardWritePage';
+import BoardInsertPage from './pages/BoardInsertPage';
+import MemberListPage from './pages/MemberListPage';
+import Join1Page from './pages/Join1Page';
+import ItemListPage from './pages/ItemListPage';
+
+
 
 const App = () => {
   return (
@@ -19,9 +25,15 @@ const App = () => {
         <Link to="/board"><button>게시판</button></Link>
         <Link to="/boardwrite"><button>글쓰기</button></Link>
         <Link to="/boardcontent"><button>글내용</button></Link>
+        <Link to="/boardinsert"><button>글쓰기1</button></Link>
+        <Link to="/memberlist"><button>회원목록</button></Link>
+        <Link to="/itemlist?page=1&text="><button>물품목록</button></Link>
+        <Link to="/join1"><button>회원가입1</button></Link>
       </div>
 
       <hr />
+
+
       <div>
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -30,6 +42,10 @@ const App = () => {
           <Route path="/board" element={<BoardPage />} />
           <Route path="/boardwrite" element={<BoardWritePage />} />
           <Route path="/boardcontent" element={<BoardContentPage />} />
+          <Route path="/boardinsert" element={<BoardInsertPage />} />
+          <Route path="/memberlist" element={<MemberListPage />} />
+          <Route path="/itemlist" element={<ItemListPage />} />
+          <Route path="/join1" element={<Join1Page />} />
         </Routes>
       </div>
     </div>
