@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Navigate, Route, Routes } from 'react-router-dom';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import JoinPage from './pages/JoinPage';
@@ -13,13 +13,30 @@ import ItemListPage from './pages/ItemListPage';
 import ItemInsertPage from './pages/ItemInsertPage';
 import ItemInsert1Page from './pages/ItemInsert1Page';
 import ItemUpdatePage from './pages/ItemUpdatePage';
+import CounterPage from './pages/CounterPage';
+import { useSelector } from 'react-redux';
+import Login1Page from './pages/Login1Page';
+import Logout1Page from './pages/Logout1Page';
+import Mypage1Page from './pages/Mypage1Page';
+import Menu100 from './pages/mypage/Menu100';
+import Menu101 from './pages/mypage/Menu101';
+import Menu102 from './pages/mypage/Menu102';
 
 
 
 const App = () => {
+
+  // CounterReducer에 있는 설정된 count, count1값을 실시간 가져오기
+  const { count, count1 } = useSelector((state) => state.CounterReducer);
+  console.log(`app.js=>`, count, count1)
+
+  const { logged, token } = useSelector((state) => state.LoginReducer);
+
+
   return (
     <div style={{ margin: '10px' }}>
       <h3>App</h3>
+      {count},{count1}, {logged}, {token}
       <hr />
       <div>
         <Link to="/"><button>홈</button></Link>
@@ -35,6 +52,11 @@ const App = () => {
         <Link to="/iteminsert"><button>물품등록</button></Link>
         <Link to="/iteminsert1"><button>물품등록1</button></Link>
         <Link to="/itemupdate"><button>물품변경</button></Link>
+        <Link to="/counter"><button>숫자증가</button></Link>
+        <br /><br />
+        {logged === 0 && <Link to="/login1"><button>로그인</button></Link>}
+        {logged === 1 && <Link to="/logout1"><button>로그아웃</button></Link>}
+        {logged === 1 && <Link to="/mypage1"><button>마이페이지</button></Link>}
       </div>
 
       <hr />
@@ -42,6 +64,15 @@ const App = () => {
 
       <div>
         <Routes>
+
+          <Route path="/login1" element={logged === 0 && <Login1Page />} />
+          <Route path="/logout1" element={logged === 1 ? <Logout1Page /> : <Navigate to="/login1" replace />} />
+          <Route path="/mypage1" element={logged === 1 ? <Mypage1Page /> : <Navigate to="/login1" replace />} >
+          <Route path="menu1" element={<Menu100/>} />
+            <Route path="menu2" element={<Menu101/>} />
+            <Route path="menu3" element={<Menu102/>} />
+          </Route>
+
           <Route path="/" element={<HomePage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/join" element={<JoinPage />} />
@@ -54,6 +85,7 @@ const App = () => {
           <Route path="/iteminsert" element={<ItemInsertPage />} />
           <Route path="/iteminsert1" element={<ItemInsert1Page />} />
           <Route path="/itemupdate" element={<ItemUpdatePage />} />
+          <Route path="/counter" element={<CounterPage />} />
         </Routes>
       </div>
     </div>
