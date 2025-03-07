@@ -48,7 +48,7 @@ const Menu100 = () => {
             ]} />
 
             <Form style={{ width: 500 }} labelCol={{ span: 8 }} initialValues={result} key={result._id}
-            onFinish={onFinish}>
+                onFinish={onFinish}>
                 <Form.Item label="이름" name="name">
                     <Input />
                 </Form.Item>

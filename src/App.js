@@ -21,6 +21,10 @@ import Mypage1Page from './pages/Mypage1Page';
 import Menu100 from './pages/mypage/Menu100';
 import Menu101 from './pages/mypage/Menu101';
 import Menu102 from './pages/mypage/Menu102';
+import Join2Page from './pages/Join2Page';
+import Join3Page from './pages/Join3Page';
+import KakaoMapPage from './pages/KakaoMapPage';
+import ChatPage from './pages/ChatPage';
 
 
 
@@ -53,6 +57,10 @@ const App = () => {
         <Link to="/iteminsert1"><button>물품등록1</button></Link>
         <Link to="/itemupdate"><button>물품변경</button></Link>
         <Link to="/counter"><button>숫자증가</button></Link>
+        <Link to="/join2"><button>우편번호</button></Link>
+        <Link to="/join3"><button>우편번호1</button></Link>
+        <Link to="/kakaomap"><button>카카오맵</button></Link>
+        <Link to="/chat"><button>채팅</button></Link>
         <br /><br />
         {logged === 0 && <Link to="/login1"><button>로그인</button></Link>}
         {logged === 1 && <Link to="/logout1"><button>로그아웃</button></Link>}
@@ -86,6 +94,10 @@ const App = () => {
           <Route path="/iteminsert1" element={<ItemInsert1Page />} />
           <Route path="/itemupdate" element={<ItemUpdatePage />} />
           <Route path="/counter" element={<CounterPage />} />
+          <Route path="/join2" element={<Join2Page />} />
+          <Route path="/join3" element={<Join3Page />} />
+          <Route path="/kakaomap" element={<KakaoMapPage />} />
+          <Route path="/chat" element={<ChatPage />} />
         </Routes>
       </div>
     </div>
